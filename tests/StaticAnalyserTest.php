@@ -15,7 +15,7 @@ use OpenApi\Tests\Fixtures\Parser\User;
 
 class StaticAnalyserTest extends OpenApiTestCase
 {
-    public function singleDefinitionCases()
+    public static function singleDefinitionCases()
     {
         return [
             'global-class' => ['class AClass {}', '\AClass', 'AClass', 'classes', 'class'],
@@ -43,7 +43,7 @@ class StaticAnalyserTest extends OpenApiTestCase
         $this->assertSame([], $definition['methods']);
     }
 
-    public function extendsDefinitionCases()
+    public static function extendsDefinitionCases()
     {
         return [
             'global-class' => ['class AClass extends Other {}', '\AClass', 'AClass', '\Other', 'classes', 'class'],
@@ -79,7 +79,7 @@ class StaticAnalyserTest extends OpenApiTestCase
         $this->assertSame($extends, $definition['extends']);
     }
 
-    public function usesDefinitionCases()
+    public static function usesDefinitionCases()
     {
         return [
             'global-class-use' => ['class AClass { use Other; }', '\AClass', 'AClass', ['\Other'], 'classes', 'class'],
@@ -160,7 +160,7 @@ class StaticAnalyserTest extends OpenApiTestCase
     /**
      * dataprovider.
      */
-    public function descriptions()
+    public static function descriptions()
     {
         return [
             'class' => [

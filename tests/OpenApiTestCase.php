@@ -217,7 +217,7 @@ class OpenApiTestCase extends TestCase
      *
      * @return array
      */
-    public function allAnnotationClasses()
+    public static function allAnnotationClasses()
     {
         $classes = [];
         $dir = new DirectoryIterator(__DIR__ . '/../src/Annotations');

@@ -106,7 +106,7 @@ END;
         $parameter->validate();
     }
 
-    public function nestedMatches()
+    public static function nestedMatches()
     {
         $parameterMatch = (object) ['key' => Parameter::class, 'value' => ['parameters']];
 

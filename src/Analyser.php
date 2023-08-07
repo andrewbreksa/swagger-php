@@ -9,7 +9,7 @@ namespace OpenApi;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\DocParser;
 
-if (class_exists(AnnotationRegistry::class, true)) {
+if (class_exists(AnnotationRegistry::class, true) && method_exists(AnnotationRegistry::class, 'registerLoader')) {
     AnnotationRegistry::registerLoader(
         function (string $class): bool {
             if (Analyser::$whitelist === false) {

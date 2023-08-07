@@ -10,7 +10,7 @@ use OpenApi\Generator;
 
 class ExamplesTest extends OpenApiTestCase
 {
-    public function exampleMappings()
+    public static function exampleMappings()
     {
         return [
             'misc' => ['misc', 'misc.yaml'],

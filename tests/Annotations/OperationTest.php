@@ -11,7 +11,7 @@ use OpenApi\Tests\OpenApiTestCase;
 
 class OperationTest extends OpenApiTestCase
 {
-    public function securityData()
+    public static function securityData()
     {
         return [
             'empty' => [

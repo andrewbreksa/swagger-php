@@ -6,6 +6,7 @@
 
 namespace OpenApi\Tests;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use OpenApi\Analyser;
 
 class AnalyserTest extends OpenApiTestCase
@@ -33,6 +34,9 @@ class AnalyserTest extends OpenApiTestCase
 
     public function testDeprecatedAnnotationWarning()
     {
+        if(!method_exists(AnnotationRegistry::class, 'registerLoader')) {
+            $this->markTestSkipped('Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() is not available');
+        }
         $this->assertOpenApiLogEntryContains('The annotation @SWG\Definition() is deprecated.');
         $this->parseComment('@SWG\Definition()');
     }

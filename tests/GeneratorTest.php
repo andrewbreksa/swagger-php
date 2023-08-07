@@ -17,7 +17,7 @@ class GeneratorTest extends OpenApiTestCase
 {
     const SOURCE_DIR = __DIR__ . '/../Examples/swagger-spec/petstore-simple';
 
-    public function sourcesProvider()
+    public static function sourcesProvider()
     {
         $sourceDir = self::SOURCE_DIR;
         $sources = [
@@ -39,8 +39,7 @@ class GeneratorTest extends OpenApiTestCase
      */
     public function testScan(string $sourceDir, iterable $sources)
     {
-        $openapi = (new Generator())
-            ->scan($sources);
+        $openapi = (new Generator())->scan($sources);
 
         $this->assertSpecEquals(file_get_contents(sprintf('%s/%s.yaml', $sourceDir, basename($sourceDir))), $openapi);
     }
@@ -70,7 +69,7 @@ class GeneratorTest extends OpenApiTestCase
         $this->assertTrue($legacyLoggerCalled, 'Expected legacy logger to be called');
     }
 
-    public function processorCases()
+    public static function processorCases()
     {
         return [
             [new OperationId(false), false],
